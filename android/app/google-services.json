@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "999669527795",
+    "firebase_url": "https://personaldoc-61e58.firebaseio.com",
+    "project_id": "personaldoc-61e58",
+    "storage_bucket": "personaldoc-61e58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999669527795:android:209645e9a47bfbce",
+        "android_client_info": {
+          "package_name": "com.example.personal_doctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "999669527795-6i06jh7uha60p9qth5bc98pt24k5kn4o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFZyAC6Co2iwk0WiWlmnpKaMHw6HCjJ0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "999669527795-6i06jh7uha60p9qth5bc98pt24k5kn4o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
