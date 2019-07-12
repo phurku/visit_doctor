@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "999669527795",
-    "firebase_url": "https://personaldoc-61e58.firebaseio.com",
-    "project_id": "personaldoc-61e58",
-    "storage_bucket": "personaldoc-61e58.appspot.com"
+    "project_number": "1031819583958",
+    "firebase_url": "https://personaldoctor-d4159.firebaseio.com",
+    "project_id": "personaldoctor-d4159",
+    "storage_bucket": "personaldoctor-d4159.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:999669527795:android:209645e9a47bfbce",
+        "mobilesdk_app_id": "1:1031819583958:android:209645e9a47bfbce",
         "android_client_info": {
           "package_name": "com.example.personal_doctor"
         }
       },
       "oauth_client": [
         {
-          "client_id": "999669527795-6i06jh7uha60p9qth5bc98pt24k5kn4o.apps.googleusercontent.com",
+          "client_id": "1031819583958-nafs9rskdivam26lbj3meo2aato2o30i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBFZyAC6Co2iwk0WiWlmnpKaMHw6HCjJ0Q"
+          "current_key": "AIzaSyBNS0O1P84HH9-Iropm7TyZmg74nsVgFgI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "999669527795-6i06jh7uha60p9qth5bc98pt24k5kn4o.apps.googleusercontent.com",
+              "client_id": "1031819583958-nafs9rskdivam26lbj3meo2aato2o30i.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
