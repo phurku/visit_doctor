@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:personal_doctor/models/patient_Model.dart';
+import 'package:personal_doctor/models/patient_model.dart';
 import 'package:personal_doctor/operations/mainpage.dart';
-import 'package:personal_doctor/resources/firestore_provider.dart';
+import 'package:personal_doctor/resources/fireStore_provider.dart';
 
 class FillProblems extends StatefulWidget {
   final ItemModel patient;
@@ -29,8 +29,8 @@ class _FillProblemsState extends State<FillProblems> {
   void initState() {
     if (widget.patient != null) {
       _fullname.text = widget.patient.fullname;
-      _age.text=widget.patient.age;
-       _date.text=widget.patient.date;
+      _age.text = widget.patient.age;
+      _date.text = widget.patient.date;
       _problems.text = widget.patient.problems;
     }
 
@@ -87,14 +87,14 @@ class _FillProblemsState extends State<FillProblems> {
                     items: _list
                         .map(
                           (value) => DropdownMenuItem(
-                                child: Text(
-                                  value,
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                  ),
-                                ),
-                                value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                color: Colors.red,
                               ),
+                            ),
+                            value: value,
+                          ),
                         )
                         .toList(),
                     onChanged: (selectAccountType) {
@@ -183,34 +183,34 @@ class _FillProblemsState extends State<FillProblems> {
 
   SizedBox _buildSubmitButton(BuildContext context) {
     return SizedBox(
-      height: 50.0,
-      width: 5.0,
-      child: RaisedButton.icon(
-        icon: Icon(Icons.save),
-        label: Text('Submit'),
-        color: Colors.blue,
-        onPressed: () async {
-          if (_fullname == null ||
-              _age == null ||
-              _problems == null ||
-              _date == null) {
-            return;
-          }
-          Map<String, dynamic> patient = {
-            'fullname': _fullname.text,
-            'age': _age.text,
-            'date': _date.text,
-            'problems': _problems.text,
-          };
-          if (widget.patient != null) {
-            await FirestoreProvider().updateItem(widget.patient.id, patient);
-          } else {
-            await FirestoreProvider().addItems(patient);
-          }
-        //   Navigator.push(
-        //       context, MaterialPageRoute(builder: (context) => alertDialog()));
-        // }
-         } )
-    );
+        height: 50.0,
+        width: 5.0,
+        child: RaisedButton.icon(
+            icon: Icon(Icons.save),
+            label: Text('Submit'),
+            color: Colors.blue,
+            onPressed: () async {
+              if (_fullname == null ||
+                  _age == null ||
+                  _problems == null ||
+                  _date == null) {
+                return;
+              }
+              Map<String, dynamic> patient = {
+                'fullname': _fullname.text,
+                'age': _age.text,
+                'date': _date.text,
+                'problems': _problems.text,
+              };
+              if (widget.patient != null) {
+                await FirestoreProvider()
+                    .updateItem(widget.patient.id, patient);
+              } else {
+                await FirestoreProvider().addItems(patient);
+              }
+              //   Navigator.push(
+              //       context, MaterialPageRoute(builder: (context) => alertDialog()));
+              // }
+            }));
   }
 }
