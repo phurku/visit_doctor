@@ -1,153 +1,104 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_doctor/pages/patient_signup.dart';
+import 'package:personal_doctor/resources/firebase_auth_provider.dart';
 
-class PatientLoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _PatientLoginPageState createState() => _PatientLoginPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _PatientLoginPageState extends State<PatientLoginPage> {
-  GlobalKey<FormState> _formkey = GlobalKey();
-  String email = "";
-  String password = "";
-  String message = "";
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _emailc=TextEditingController();
+    final TextEditingController _passwordc=TextEditingController();
+  
+
+
+  Widget _buildPageContent(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      color: Colors.grey.shade800,
       child: ListView(
         children: <Widget>[
           Column(
             children: <Widget>[
-              SizedBox(
-                height: 15.0,
+              SizedBox(height: 50,),
+              Container(
+                height: 100, 
+                child: Text("LOGIN", style: TextStyle(color: Colors.pink, fontSize: 30.0, fontWeight: FontWeight.w700),),
               ),
+              SizedBox(height: 50,),
+              ListTile(
+                title: TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: "Email address:",
+                    hintStyle: TextStyle(color: Colors.white70),
+                    border: InputBorder.none,
+                    icon: Icon(Icons.email, color: Colors.white30,)
+                  ),
+                )
+              ),
+              Divider(color: Colors.grey.shade600,),
+              ListTile(
+                title: TextField(
+                  obscureText: true,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: "Password:",
+                    hintStyle: TextStyle(color: Colors.white70),
+                    border: InputBorder.none,
+                    icon: Icon(Icons.lock, color: Colors.white30,)
+                  ),
+                )
+              ),
+              Divider(color: Colors.grey.shade600,),
+              SizedBox(height: 20,),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Patient Login page',style: TextStyle(color: Colors.red,fontSize: 30,fontWeight: FontWeight.bold),)
+                  Expanded(
+                    child: RaisedButton(
+                      onPressed: ()=>_login(),
+                      color: Colors.cyan,
+                      child: Text('Login', style: TextStyle(color: Colors.white70, fontSize: 16.0),),
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(
-                height: 40,
-              ),
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/patientlogin.jpg'),
-                      fit: BoxFit.contain),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Form(
-                key: _formkey,
-                child: Column(
-                  children: <Widget>[
-                    ListTile(
-                      title: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                            labelText: "Email",
-                            hintText: 'Email',
-                            hintStyle: TextStyle(color: Colors.black),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25)),
-                            icon: Icon(Icons.email,
-                                color: Colors.black, size: 30)),
-                        validator: (value) {
-                          if (value.isEmpty) return "please enter yor email";
-                        },
-                        onFieldSubmitted: (value) {
-                          email = value;
-                        },
-                      ),
-                    ),
-                    ListTile(
-                      title: TextFormField(
-                        obscureText: true,
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                            labelText: "Password",
-                            hintText: 'Password',
-                            hintStyle: TextStyle(color: Colors.black),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25)),
-                            icon: Icon(Icons.lock_outline,
-                                color: Colors.black, size: 30)),
-                        validator: (value) {
-                          if (value.isEmpty) return 'Please enter password';
-                        },
-                        onFieldSubmitted: (value) {
-                          password = value;
-                        },
-                      ),
-                    ),
-                    Divider(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    RaisedButton(
-                      color: Colors.white,
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () => login(),
-                    ),
-                    Divider(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                contentPadding: EdgeInsets.all(20),
-                                title: Text(
-                                  'Not Registered yet?',
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                              )),
-                          Expanded(
-                            flex: 1,
-                            child: ListTile(
-                                contentPadding: EdgeInsets.all(20),
-                                title: RaisedButton(
-                                  color: Colors.white,
-                                  child: Text(
-                                    'Signup',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                  onPressed: (){
-                                    Navigator.pushReplacement(context, MaterialPageRoute(
-                                      builder: (context)=>PatientSignupPage()
-                                    ));
-                                  },
-                                )),
-                          )
-                        ])
-                  ],
-                ),
-              ),
+              SizedBox(height: 10.0),
+              Text('Forgot your password?', style: TextStyle(color: Colors.grey.shade500),),
+              SizedBox(height: 40,),
+              FlatButton(
+                child: Text("Not registered? Signup", style: TextStyle(color: Colors.white),),
+                onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context)=> SignupPage()
+                  ));
+                }
+              )
             ],
-          )
+          ),
         ],
       ),
     );
   }
-
-  login() async {
-    if (!_formkey.currentState.validate()) return;
+void _login()async{
+print(_emailc.text);
+print(_passwordc.text);
+try{
+  FirebaseUser user=await FirebaseAuthProvider().login(_emailc.text,_passwordc.text);
+  print(user);
+  //if(user!=null)
+ // Navigator.pushNamed(context, 'home');
+}
+catch(e){
+    print(e.message);
+  }
+}
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _buildPageContent(context),
+    );
   }
 }

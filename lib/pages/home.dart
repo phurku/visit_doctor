@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                   child: RaisedButton(
                     elevation: 1.0,
                     onPressed: () =>Navigator.pushReplacement(context, MaterialPageRoute(
-                      builder:(context)=>PatientLoginPage() ,
+                      builder:(context)=>LoginPage() ,
                     )),
                     color: Colors.lightGreen,
                     child: Text(
